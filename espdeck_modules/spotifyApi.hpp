@@ -2,6 +2,7 @@
 #include <WiFiClientSecure.h>
 #include <ArduinoSpotify.h>
 #include <ArduinoSpotifyCert.h>
+#include "../secretCredentials.h"
 
 class SpotifyAPI : public ESPDeckModule {
     public:
@@ -26,11 +27,8 @@ class SpotifyAPI : public ESPDeckModule {
         }
     private:
         long _refreshTime;
-        const char* _spotifyClientId = SPOTIFYCLIENTID;
-        const char* _spotifyClientSecret = SPOTIFYCLIENTSECRET;
-        const char* _spotifyClientRefreshToken = SPOTIFYREFRESHTOKEN;
         WiFiClientSecure _client;
         LiquidCrystal_I2C *_lcd;
         CurrentlyPlaying _songInfo;
-        ArduinoSpotify _spotify = ArduinoSpotify(_client,_spotifyClientId,_spotifyClientSecret,_spotifyClientRefreshToken);
+        ArduinoSpotify _spotify = ArduinoSpotify(_client,SPOTIFYCLIENTID,SPOTIFYCLIENTSECRET,SPOTIFYREFRESHTOKEN);
 };
