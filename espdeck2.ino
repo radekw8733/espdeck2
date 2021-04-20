@@ -5,7 +5,7 @@
 #include <IRremoteESP8266.h>
 #include "espdeck_moduleparent.hpp"
 #include "espdeck_moduleimport.hpp"
-#include "wifiCredentials.h"
+#include "secretCredentials.h"
 
 int currentFrame;
 LiquidCrystal_I2C lcd(0x27,16,2);
@@ -21,7 +21,7 @@ void setup() {
     ir.setUnknownThreshold(12);
     ir.enableIRIn();
     prefs.begin("espdeck");
-    WiFi.begin(ssid,pass);
+    WiFi.begin(SSID,PASSWD);
     Serial.print("Connecting...");
     while (WiFi.status() != WL_CONNECTED) {
         Serial.print(".");
